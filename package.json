@@ -1,0 +1,46 @@
+{
+  "name": "client",
+  "version": "1.0.0",
+  "main": "electron/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently -k \"vite\" \"wait-on tcp:5173 && nodemon\"",
+    "build:ui": "vite build",
+    "start": "electron .",
+    "build": "npm run build:ui",
+    "pack": "npm run build && electron-builder"
+  },
+  "build": {
+    "appId": "com.example.electronreact",
+    "productName": "ElectronReactApp",
+    "files": [
+      "dist/**/*",
+      "main.js",
+      "preload.js"
+    ],
+    "mac": {
+      "category": "public.app-category.utilities"
+    },
+    "extraMetadata": {
+      "main": "electron/main.js",
+      "license": "MIT"
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.0.0",
+    "concurrently": "^9.2.0",
+    "cross-env": "^10.0.0",
+    "electron": "^37.2.6",
+    "nodemon": "^3.1.10",
+    "vite": "^7.1.1",
+    "wait-on": "^8.0.4"
+  }
+}
